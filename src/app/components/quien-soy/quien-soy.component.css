@@ -1,0 +1,69 @@
+
+* {
+  background-color: #2a476d!important;
+}
+
+.gamer-profile-container {
+  padding: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+  background-color: transparent !important;
+}
+
+.gamer-card {
+
+  max-width: 40vw;
+  border-radius: 8px; 
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.gamer-card-body {
+
+  margin: 10px;
+}
+
+
+.profile-image {
+  
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%; 
+}
+
+h2, h3 {
+  color: #e6e6e6;
+}
+
+p {
+  font-size: 16px;
+  color: #ccc;
+}
+
+
+.row {
+  margin-bottom: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .col-md-4, .col-md-8 {
+    width: 100%; 
+    text-align: center;
+  }
+  
+  .col-md-8 h2, .col-md-8 p {
+    margin-top: 10px; 
+  }
+}
+
+
+
+

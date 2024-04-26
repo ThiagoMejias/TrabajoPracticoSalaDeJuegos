@@ -1,0 +1,10 @@
+<div>
+    @if(userLogin){
+        <a  title="logout" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+        </a>
+        <app-quien-soy></app-quien-soy>
+    }@else{
+        <app-login></app-login>
+    }
+</div>
