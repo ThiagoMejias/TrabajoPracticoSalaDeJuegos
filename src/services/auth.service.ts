@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile, user } from '@angular/fire/auth';
 import { User } from '../app/Inteface/user';
 import { Observable, from } from 'rxjs';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,21 @@ export class AuthService {
   firebaseAuth = inject(Auth);
   user$ = user(this.firebaseAuth);
   currentUserSig = signal<User | null| undefined>(undefined);
-  constructor() {
+  constructor(private db : AngularFireDatabase) {
  
   }
 
-   register(email: string, password: string) : Observable<void> {
-     const promiseUser = createUserWithEmailAndPassword(this.firebaseAuth, email, password).then(() =>{ });
+   register(email: string, password: string, username : string) : Observable<void> {
+     const promiseUser = createUserWithEmailAndPassword(this.firebaseAuth, email, password)
+                        .then((userCredential) =>{ 
+                          const user = userCredential.user;
+                          return updateProfile(user,{ 
+                            displayName : username
+                          }).then(() => {
+                            const registrationDate = new Date().toISOString();
+                            return this.db.object(`users/${user.uid}/registrationDate`).set(registrationDate);
+                        });
+                        });
      return from(promiseUser);
   }
 
