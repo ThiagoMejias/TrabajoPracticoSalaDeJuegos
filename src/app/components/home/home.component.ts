@@ -3,11 +3,12 @@ import { QuienSoyComponent } from '../quien-soy/quien-soy.component';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../../../services/auth.service';
 import { MatIconModule } from '@angular/material/icon';
+import { CardGamerComponent } from '../card-gamer/card-gamer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [QuienSoyComponent,LoginComponent,MatIconModule],
+  imports: [QuienSoyComponent,LoginComponent,MatIconModule,CardGamerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

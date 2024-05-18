@@ -1,0 +1,65 @@
+
+.card-gamer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; 
+  width: 15vw;
+  height: 35vh;
+  margin-bottom: 3vh;
+  border: 3px solid rgb(68, 114, 196); 
+  border-radius: 10px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  animation: borderAnimation 2s infinite alternate; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  padding: 10px; 
+  background-color: #fff; 
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card-gamer:hover {
+  transform: scale(1.05);
+}
+
+.title-card-gamer {
+  margin: 10px 0;
+  font-size: 1.5em; 
+  color: rgb(68, 114, 196); 
+}
+
+.description-card-gamer {
+  font-size: 1em; 
+  color: #ffffff; 
+  margin: 0; 
+  padding: 10px 0; 
+}
+.description-card-gamer:hover
+{
+ color:  rgb(68, 114, 196);
+}
+
+a {
+  color: white !important;
+  text-decoration: none; 
+}
+
+a:hover {
+  color: rgb(68, 114, 196);
+}
+  
+
+@keyframes borderAnimation {
+  from {
+    border-color: rgba(68, 114, 196, 0.5); 
+  }
+  to {
+    border-color: rgba(68, 114, 196, 1); 
+  }
+}
+
+
+
+

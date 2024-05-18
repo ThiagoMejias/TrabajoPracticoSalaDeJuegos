@@ -1,6 +1,7 @@
 <div class="login-box">
     <h2>Login</h2>
     <form>
+        <button class="btn btn-primary btn-block mb-3" (click)="cargarUsuario()" >Usuario</button>
         <div class="user-box">
             <input [(ngModel)]="email" name="email" required  #emailInput="ngModel" type="text">
             <label>Email</label>

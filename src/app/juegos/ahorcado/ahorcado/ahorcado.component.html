@@ -1,0 +1,45 @@
+
+<div class="">
+  <div class="container-ahorcado">
+        <div class="text-center p-3 border-round-sm font-bold">
+          <h1 class="text-title" >Juego del Ahorcado</h1>
+          <img
+            class="ahorcado-img"
+            src="/assets/ahorcado/AhorcadoImg{{tries}}.png"
+             />
+             <div class="letters-words">
+              <span class="letter-container " *ngFor="let letter of lettersWordToGuess">
+                @if(isLetterVisible(letter)){
+                  <span class="letter-to-guess" >{{ letter.toLocaleUpperCase() }}</span>
+                } @else {
+     
+                  <span class="no-content"></span>
+                }
+         
+              </span>
+            </div>
+            
+          <h3 class="try-text">Intentos: {{tries}} - {{maxTries}}  </h3>
+        </div>
+    
+
+      <div class="container-buttons">
+         @for (letter of letters; track $index) {
+             <a >
+             <button class="btn btn-primary m-1"   (click)="checkLetter(letter, $index)" [disabled]="isLetterDisabled[$index] || !inGame" [ngClass]="{'used-button': isLetterDisabled[$index] || !inGame}">
+                 {{letter.toUpperCase()}}
+             </button>
+             </a>
+         }
+      </div>
+  </div>
+
+  <div class="mt-5 text-center">
+    @if(inGame){
+      <button type="button" class="btn btn-primary mt-2" (click)="startGame()">Reiniciar</button>
+
+    }@else {
+      <button type="button" class="btn btn-primary mt-2" (click)="startGame()">Empezar</button>
+    }
+  </div>
+</div>

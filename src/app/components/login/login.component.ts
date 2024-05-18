@@ -33,8 +33,12 @@ export class LoginComponent {
     
   }
 
+  cargarUsuario(){
+    this.email = 'demianmejias@gmail.com';
+    this.password = '12345T';
+  }
+
   setLogin(){
-;
     
     this.isLoggedIn = false;
   }
