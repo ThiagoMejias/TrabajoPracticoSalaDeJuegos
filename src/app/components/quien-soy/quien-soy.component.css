@@ -49,6 +49,14 @@ p {
 
 
 @media (max-width: 768px) {
+
+  .gamer-card-body{
+    width: 60vw;
+  }
+  .gamer-card {
+    max-width: 300vw;
+  }
+
   .row {
     flex-direction: column;
     align-items: center;
@@ -62,6 +70,7 @@ p {
   .col-md-8 h2, .col-md-8 p {
     margin-top: 10px; 
   }
+  
 }
 
 

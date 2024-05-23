@@ -1,4 +1,6 @@
 export interface User {
-    email : string;
-   
+    id?:string;
+    email? : string;
+    username? : string;
+    registrationDate? : Date;
 }

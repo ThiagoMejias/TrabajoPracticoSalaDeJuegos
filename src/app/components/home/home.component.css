@@ -16,3 +16,11 @@ mat-icon {
     flex-direction: row;
     justify-content:space-evenly;
   }
+
+
+  @media screen and (max-width: 600px) {
+    .container-card-gamers {
+      flex-direction: column;
+      align-items: center; 
+    }
+  }

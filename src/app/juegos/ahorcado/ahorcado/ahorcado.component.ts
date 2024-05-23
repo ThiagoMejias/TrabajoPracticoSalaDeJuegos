@@ -98,7 +98,6 @@ export class AhorcadoComponent {
 
   
 
-
   
   //#region llamadas a servicios  
 

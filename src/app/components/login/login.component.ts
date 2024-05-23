@@ -29,7 +29,6 @@ export class LoginComponent {
   
 
   constructor(private authService : AuthService, private router : Router) {
-    console.log("aa")
     
   }
 
@@ -68,7 +67,7 @@ export class LoginComponent {
   register(){
     if(this.verifyFields())
     {
-      this.authService.register(this.email, this.password).subscribe({
+      this.authService.register(this.email, this.password,this.username).subscribe({
         next: ()=>{
           this.router.navigateByUrl('/');
         },

@@ -1,5 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile, user } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword,signInWithEmailAndPassword, user } from '@angular/fire/auth';
+import {Firestore, collection,addDoc} from '@angular/fire/firestore';
 import { User } from '../app/Inteface/user';
 import { Observable, from } from 'rxjs';
 
@@ -8,15 +9,28 @@ import { Observable, from } from 'rxjs';
 })
 export class AuthService {
   firebaseAuth = inject(Auth);
+  firestore = inject(Firestore);
+  usersCollection = collection(this.firestore, 'users');
   user$ = user(this.firebaseAuth);
-  currentUserSig = signal<User | null| undefined>(undefined);
+  currentUserSig = signal<User | null>(null);
   constructor() {
  
   }
 
-   register(email: string, password: string) : Observable<void> {
-     const promiseUser = createUserWithEmailAndPassword(this.firebaseAuth, email, password).then(() =>{ });
-     return from(promiseUser);
+  register(email: string, password: string, username: string): Observable<void> {
+    const promiseUser = createUserWithEmailAndPassword(this.firebaseAuth, email, password).then(async (userCredential) => {
+     
+      const user = userCredential.user;
+      
+      const usersCollection = collection(this.firestore, 'users');
+      await addDoc(usersCollection, {
+        email: user.email,
+        registrationDate: new Date(),
+        username: username
+      });
+    });
+
+    return from(promiseUser);
   }
 
    login(email: string, password: string) : Observable<void> {

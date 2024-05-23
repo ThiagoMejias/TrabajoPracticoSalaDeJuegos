@@ -1,1 +1,18 @@
-<p>mayor-menor works!</p>
+
+<div class="container-game">
+    <p class="score">Puntuación: {{ score }}</p>
+@if (card) {
+    <div class="container-card">
+        <img [src]="card.image" alt="Carta">
+    </div>
+}
+
+<div class="container-buttons mt-5">
+    <button class="btn btn-primary btn-higher" (click)="requestCard('mayor')" >Mayor</button>
+    <button class="btn btn-primary btn-minor" (click)="requestCard('menor')"  >Menor</button>
+</div>
+
+
+
+</div>
+

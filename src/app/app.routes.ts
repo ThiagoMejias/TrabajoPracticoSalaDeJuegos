@@ -3,6 +3,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AhorcadoComponent } from './juegos/ahorcado/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './juegos/mayorOMenor/mayor-menor/mayor-menor.component';
+import { ChatComponent } from './components/chat/chat/chat.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent},
     { 
