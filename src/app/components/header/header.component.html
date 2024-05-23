@@ -1,0 +1,16 @@
+@if(userLogin)
+{   
+    <div class="d-flex justify-content-between mt-4">
+        <div class="d-flex justify-content-start ">
+        <a title="Inicio" href="/" >
+            <mat-icon class="home" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+        </a>
+        </div>
+        <div class="d-flex justify-content-end ">
+        <a title="Salir" (click)="logout()">
+            <mat-icon  class="logout" aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
+        </a>
+        </div>
+  </div>
+  
+}

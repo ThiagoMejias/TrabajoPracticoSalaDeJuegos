@@ -25,15 +25,10 @@ export class ChatComponent {
 
   ngOnInit(): void {
     if (this.authService.currentUserSig != null) {
-     
       this.user$.subscribe(user =>{
         this.actualEmail = user!.email;
-        console.log(this.actualEmail);
-        
       });
-      
       this.messages$ = this.chatService.getMessages();
-      this.messages$.subscribe(messages =>console.log(messages));
     }
   }
 

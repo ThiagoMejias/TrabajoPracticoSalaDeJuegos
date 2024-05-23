@@ -1,0 +1,25 @@
+.container-question{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color : white;
+}
+
+.container-options{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.answer-button {
+    transition: background-color 0.7s ease, color 0.7s ease;
+}
+
+.answer-button:hover {
+    background-color: #0056b3 !important; 
+    color: white;            
+    transform: scale(1.05);    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

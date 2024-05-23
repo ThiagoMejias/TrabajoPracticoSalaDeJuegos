@@ -1,0 +1,23 @@
+
+<div class="container-preguntas">
+    <div class="container-titles">
+        <h1>TRIVIA</h1>
+        <h5>{{score}}</h5>
+    </div>
+@if(question ){
+    <div class="container-Question" >
+        @if(showResult){
+            <div class="container-score">
+                <h2>{{this.textFinal}}</h2>
+                <p>Tuviste {{ score }} respuestas correctas </p>
+                <button class="btn btn-primary" (click)="restart()">Jugar de nuevo!</button>
+            </div>    
+        }@else{
+            @if(!loading) {
+                <app-question (answerSelected)="handleAnswerSelected($event)" [question]="question" ></app-question>
+            }
+        }
+    </div>
+}
+
+</div>

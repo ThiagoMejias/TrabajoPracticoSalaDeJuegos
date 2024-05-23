@@ -1,0 +1,21 @@
+
+.container-score{
+    color: white !important;
+}
+.container-preguntas{
+    display: flex;
+    height: 100%;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+}
+.container-titles{
+ margin-bottom: 10vh;
+ color: white;
+ font-family: 'Courier New', Courier, monospace;
+}
+.container-Question{
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+}

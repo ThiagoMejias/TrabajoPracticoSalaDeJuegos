@@ -1,0 +1,16 @@
+<div class=" container-question d-flex flex-align-items-center justify-content-center">
+    <div class="d-flex justify-content-center">
+            <h5>
+                {{question.question}}
+            </h5>
+    </div>
+    <div class="container-options">
+            @for (option of optionsAnswer; track $index) {
+                <a>
+                    <button class="btn btn-primary answer-button m-1"   (click)="selectAnswer(option)">
+                        {{option}}
+                    </button>
+                </a>
+            }
+    </div>
+</div>

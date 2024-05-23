@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WordService } from '../../../../services/word.service';
 import { CommonModule } from '@angular/common';
+import { TransaltionService } from '../../../../services/transaltion.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-ahorcado',
@@ -24,7 +25,7 @@ export class AhorcadoComponent {
   ];
   public isLetterDisabled: boolean[] = Array(this.letters.length).fill(false);
   public correctLetters: { [key: string]: boolean } = {};
-  constructor(private wordService: WordService) {
+  constructor(private wordService: WordService, private _translateService: TransaltionService) {
 
    }
  
@@ -34,13 +35,13 @@ export class AhorcadoComponent {
     this.correctLetters = {}
     this.isLetterDisabled.fill(false);
     this.wordToGuess = (await this.getRandomWord())[0];
+    this.wordToGuess = await this._translateService.translate(this.wordToGuess);
     this.correctLetters = {};
     for (const letter of this.wordToGuess) {
         this.correctLetters[letter] = false;
     }
     this.lettersWordToGuess = this.wordToGuess.split('');
   
-    console.log(this.wordToGuess);
 
   }
 

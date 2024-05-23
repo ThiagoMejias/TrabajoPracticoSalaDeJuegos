@@ -1,15 +1,10 @@
 <div>
     @if(userLogin){
-        <div class="d-flex justify-content-end m-3">
-            <a  title="logout" (click)="logout()">
-                <mat-icon>logout</mat-icon>
-            </a>
-        </div>
         <app-quien-soy></app-quien-soy>
         <div class="container-card-gamers">
             <card-gamer titleGame="Ahorcado" url="ahorcado" descriptionGame="Adivina la palabra misteriosa! sin quedarte sin cabeza en el intento"></card-gamer>
             <card-gamer titleGame="Mayor o menor" url="mayorOMenor" descriptionGame= "La siguiente carta es mayor o menor? Adivina la carta y suma puntos!"></card-gamer>
-            <card-gamer titleGame="Ahorcado"></card-gamer>
+            <card-gamer titleGame="Preguntados" url="preguntados" descriptionGame="Evalua tus conocimientos en un juego de trivia, suma puntos en distintas categorias para ser el mejor!" ></card-gamer>
         </div>
    
     }@else{
