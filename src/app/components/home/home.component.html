@@ -1,10 +1,12 @@
-<div>
+<div class="container-home">
     @if(userLogin){
-        <app-quien-soy></app-quien-soy>
-        <div class="container-card-gamers">
+      
+        <div class="container-card-gamers ">
             <card-gamer titleGame="Ahorcado" url="ahorcado" descriptionGame="Adivina la palabra misteriosa! sin quedarte sin cabeza en el intento"></card-gamer>
             <card-gamer titleGame="Mayor o menor" url="mayorOMenor" descriptionGame= "La siguiente carta es mayor o menor? Adivina la carta y suma puntos!"></card-gamer>
             <card-gamer titleGame="Preguntados" url="preguntados" descriptionGame="Evalua tus conocimientos en un juego de trivia, suma puntos en distintas categorias para ser el mejor!" ></card-gamer>
+            <card-gamer titleGame="Adivina el numero" url="adivinaElNumero" descriptionGame="Adivina el numero, antes que el tiempo se termine! Mientras mas rapido lo adivines mas puntos sumas." ></card-gamer>
+            
         </div>
    
     }@else{

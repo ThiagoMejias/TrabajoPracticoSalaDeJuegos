@@ -2,6 +2,12 @@ mat-icon {
     color: red;       /* Cambia el color del icono */
     font-size: 24px;  /* Cambia el tamaño del icono */
   }
+.container-home{
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
   a {
     color: white !important;
       text-decoration: none; 
@@ -15,6 +21,7 @@ mat-icon {
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
+    width: 100%;
   }
 
 

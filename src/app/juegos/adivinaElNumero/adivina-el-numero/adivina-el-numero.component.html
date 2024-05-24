@@ -1,0 +1,21 @@
+<div class="container-guess-number">
+    <h1>Adivina el Número</h1>
+    @if(difficulty == ""){
+        <div>
+            <button class="btn btn-primary m-2" (click)="setDifficulty('easy')">Fácil</button>
+            <button class="btn btn-primary m-2" (click)="setDifficulty('hard')">Difícil</button>
+        </div>
+    }@else{
+        <p   class="time-font">Tiempo restante: </p>
+        <p  id="timeCounter" [ngClass]="getCounterClass()" [ngClass]="getCounterClass()"> {{ timeLeft }}</p>
+        <p  class="time-font">segundos</p>
+        <p class="clue-font">{{ message }}</p>
+        <div class="container-dates">
+          <input class="form-control" type="number" [(ngModel)]="guess" placeholder="Introduce tu suposición" [disabled]="timeLeft <= 0"/>
+          <button class="btn btn-primary" (click)="checkGuess()" [disabled]="timeLeft <= 0">Comprobar</button>
+          <button class="btn btn-primary" (click)="showDifficulty()">Nuevo Juego</button>
+        </div>
+    }
+  
+   
+  </div>

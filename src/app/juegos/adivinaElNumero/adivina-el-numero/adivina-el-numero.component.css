@@ -1,0 +1,43 @@
+
+
+
+#timeCounter {
+    font-size: 3em; 
+    font-weight: bold;
+}
+.clue-font
+{
+    font-size: 1.5em;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.red {
+    color: red;
+}
+
+.time-font{
+    font-size: 1.5em;
+}
+.container-guess-number{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.container-dates{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-dates * {
+    margin: 1vh;
+    width: 20vw;
+    color: white;
+}
