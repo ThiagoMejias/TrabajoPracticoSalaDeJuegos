@@ -22,7 +22,9 @@ export class HeaderComponent implements OnInit {
     })
    }
   logout(){
+    localStorage.removeItem('user')
     this.authService.signOut();
+
     window.location.href = "/login";
   }
 }

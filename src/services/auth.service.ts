@@ -55,6 +55,7 @@ export class AuthService {
   }
 
   signOut(): Observable<void> {
+    localStorage.removeItem('user');
     return from(this.firebaseAuth.signOut()).pipe(
       tap(() => {
         this.currentUserSig.set(null);
