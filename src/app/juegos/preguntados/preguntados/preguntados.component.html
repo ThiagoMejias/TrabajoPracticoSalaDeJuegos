@@ -4,7 +4,8 @@
         <h1>TRIVIA</h1>
         <h5>{{score}}</h5>
     </div>
-@if(question ){
+
+@if(question){
     <div class="container-Question" >
         @if(showResult){
             <div class="container-score">
@@ -13,9 +14,7 @@
                 <button class="btn btn-primary" (click)="restart()">Jugar de nuevo!</button>
             </div>    
         }@else{
-            @if(!loading) {
-                <app-question (answerSelected)="handleAnswerSelected($event)" [question]="question" ></app-question>
-            }
+            <app-question (answerSelected)="handleAnswerSelected($event)" [question]="question" ></app-question>
         }
     </div>
 }

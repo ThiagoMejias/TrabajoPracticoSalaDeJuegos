@@ -2,7 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword,signInWithEmailAndPassword, user } from '@angular/fire/auth';
 import {Firestore, collection,addDoc} from '@angular/fire/firestore';
 import { User } from '../app/Inteface/user';
-import { Observable, from } from 'rxjs';
+import { Observable, from, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,7 @@ export class AuthService {
   constructor() {
  
   }
+
 
   register(email: string, password: string, username: string): Observable<void> {
     const promiseUser = createUserWithEmailAndPassword(this.firebaseAuth, email, password).then(async (userCredential) => {
@@ -34,14 +35,32 @@ export class AuthService {
   }
 
    login(email: string, password: string) : Observable<void> {
-    const promiseUser = signInWithEmailAndPassword(this.firebaseAuth, email, password).then(() =>{ });
+    const promiseUser = signInWithEmailAndPassword(this.firebaseAuth, email, password).then(() =>{ 
+      localStorage.setItem('user',email);
+    });
     return from(promiseUser);
   }
 
+  getUser() {
+    const userData = localStorage.getItem("user");
+    console.log(userData);
+    
+    return userData ? userData : null;
+  }
 
-  singOut() : Observable<void>{
-   const promiseLogOut = this.firebaseAuth.signOut();
-   return from(promiseLogOut);
+  isAuthenticated(): boolean {
+    
+    
+    return this.currentUserSig() !== null;
+  }
+
+  signOut(): Observable<void> {
+    return from(this.firebaseAuth.signOut()).pipe(
+      tap(() => {
+        this.currentUserSig.set(null);
+        localStorage.removeItem('user');
+      })
+    );
   }
 
 

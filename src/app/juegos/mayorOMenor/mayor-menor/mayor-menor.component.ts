@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeckOfCardsService } from '../../../../services/deck-of-cards.service';
 import { Card } from '../../../Inteface/card';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-mayor-menor',
@@ -25,6 +26,7 @@ export class MayorMenorComponent implements OnInit {
 
 
   ngOnInit(): void {
+   
     this.deckService.waitForDeckInitialization().then(() => {
       this.getRandomCard();
     }).catch(error => {

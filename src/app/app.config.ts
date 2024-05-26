@@ -6,6 +6,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {provideAuth,getAuth} from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { DatePipe } from '@angular/common';
 const firebaseConfig = {
   apiKey: "AIzaSyBOuj60P-u85SfMIKV2MP0rbEv1v02LS9k",
   authDomain: "trabajopracticojuegos.firebaseapp.com",
@@ -25,7 +26,8 @@ export const appConfig: ApplicationConfig = {
       provideFirebaseApp(()=>initializeApp(firebaseConfig)),
       provideFirestore(()=>getFirestore()),
       provideAuth(() => getAuth())
-    ])
+    ]),
+    DatePipe 
   ]
 
 };

@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   logout(){
-    this.authService.singOut();
+    this.authService.signOut();
   }
   
 }

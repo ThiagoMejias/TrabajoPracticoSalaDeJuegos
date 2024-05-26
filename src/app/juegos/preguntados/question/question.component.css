@@ -1,3 +1,7 @@
+.img-harry {
+    max-width: 200px; 
+    height: auto; 
+  }
 .container-question{
     display: flex;
     flex-direction: column;

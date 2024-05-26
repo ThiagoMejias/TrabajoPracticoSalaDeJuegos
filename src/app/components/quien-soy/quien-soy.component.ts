@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './quien-soy.component.css'
 })
 export class QuienSoyComponent {
-  
+  urlImage : string ='../../assets/about-me/FOTO CARNET THIAGO JPG.jpg';
 }

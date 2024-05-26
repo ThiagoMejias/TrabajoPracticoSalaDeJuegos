@@ -6,35 +6,46 @@ import { MayorMenorComponent } from './juegos/mayorOMenor/mayor-menor/mayor-meno
 import { PreguntadosComponent } from './juegos/preguntados/preguntados/preguntados.component';
 import { AdivinaElNumeroComponent } from './juegos/adivinaElNumero/adivina-el-numero/adivina-el-numero.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
+import { authGuard } from './guards/auth.guard';
 export const routes: Routes = [
-    { path: '', component: HomeComponent},
+    { path: '', 
+    component: HomeComponent,
+    canActivate: [authGuard]
+    },
+    
     { 
-        path: 'login',
-        loadComponent: ()=> import('./components/home/home.component').then(()=> LoginComponent)
+      path: 'login',
+      loadComponent: ()=> import('./components/login/login.component').then(()=> LoginComponent)
     },
     { 
       path: 'sobreMi',
-      loadComponent: ()=> import('./components/quien-soy/quien-soy.component').then(()=> QuienSoyComponent)
+      loadComponent: ()=> import('./components/quien-soy/quien-soy.component').then(()=> QuienSoyComponent),
+      canActivate: [authGuard]
     },
     { 
       path: 'ahorcado',  
       loadComponent: ()=> import('./juegos/ahorcado/ahorcado/ahorcado.component')
-                            .then(()=> AhorcadoComponent)
+                            .then(()=> AhorcadoComponent),
+      canActivate: [authGuard]
     } ,
     { 
       path: 'mayorOMenor',  
       loadComponent: ()=> import('./juegos/mayorOMenor/mayor-menor/mayor-menor.component')
-                            .then(()=> MayorMenorComponent)
+                            .then(()=> MayorMenorComponent),
+      canActivate: [authGuard]
     },
     { 
       path: 'adivinaElNumero',  
       loadComponent: ()=> import('./juegos/adivinaElNumero/adivina-el-numero/adivina-el-numero.component')
-                            .then(()=> AdivinaElNumeroComponent)
+                            .then(()=> AdivinaElNumeroComponent),
+      canActivate: [authGuard]
     },
     { 
       path: 'preguntados',  
       loadComponent: ()=> import('./juegos/preguntados/preguntados/preguntados.component')
-                            .then(()=> PreguntadosComponent)
+                            .then(()=> PreguntadosComponent),
+      canActivate: [authGuard]
+      
     }   
 
     

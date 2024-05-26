@@ -6,7 +6,7 @@ mat-icon{
 .chat-box {
     position: fixed;
     bottom: 0px;
-    right: 3px ;
+    right:3px ;
     width: 45vw;
     max-width: 350px !important;
     transition: transform 0.3s ease-in-out;
@@ -14,13 +14,15 @@ mat-icon{
   }
   
   .user-message {
+    align-self: flex-end;
     text-align: right;
     color : white;
   }
   
   .other-message {
+    align-self: flex-start;
     text-align: left;
-    color : white;
+    color : rgb(59, 123, 241);
   }
   .chat-box.open {
     transform: translateY(0);
@@ -45,6 +47,7 @@ mat-icon{
     flex: 1;
     overflow-y: auto;
     padding: 10px;
+    margin: 0;
   }
  
   
@@ -82,5 +85,29 @@ mat-icon{
   
 .icon-send{
     background-color: white !important;
+}
+
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.message-bubble {
+  padding: 10px 20px;
+  border-radius: 20px;
+  max-width: 90%;
+  margin: 0px;
+  box-shadow: 0 2px 4px rgba(47, 56, 177, 0.733);
+
+}
+
+
+.content-message{
+  font-size: 0.9rem !important;
 }
 

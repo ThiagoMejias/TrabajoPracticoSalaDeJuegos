@@ -1,21 +1,26 @@
- <div class="chat-box" [class.open]="isOpen">
-    <div class="chat-header" (click)="toggleChat()">
-      <span>Chat</span>
-    </div>
-    <div class="chat-content" *ngIf="isOpen">
-        <div class="messages">
-            <div *ngFor="let message of messages$ | async" [ngClass]="{ 'user-message': message.email == actualEmail, 'other-message': message.email != actualEmail }">
-              <strong>{{ message.username }}:</strong> {{ message.text }}
+ 
+@if(userLogin){
+      <div class="chat-box" [class.open]="isOpen">
+        <div class="chat-header" (click)="toggleChat()">
+          <span>Chat</span>
+        </div>
+        <div class="chat-content" *ngIf="isOpen">
+            <div class="messages">
+                <div *ngFor="let message of messages$ | async" [ngClass]="{ 'user-message': message.email == actualEmail, 'other-message': message.email != actualEmail }">
+                  <div class="message-bubble">
+                    <strong class="content-message">{{ message.username }} {{ convertTimestamp(message.timestamp) }}:</strong> {{ message.text }}
+                  </div>
+                </div>
             </div>
+          <div class="chat-input">
+            <input [(ngModel)]="newMessage" placeholder="Ingrese un mensaje" />
+            <a class="btn" (click)="sendMessage()" >
+                <mat-icon>send</mat-icon>
+            </a>
           </div>
-      <div class="chat-input">
-        <input [(ngModel)]="newMessage" placeholder="Ingrese un mensaje" />
-        <a class="btn" (click)="sendMessage()" >
-            <mat-icon>send</mat-icon>
-        </a>
+        </div>
       </div>
-    </div>
-  </div>
+}
 
 
 

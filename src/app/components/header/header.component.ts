@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
     })
    }
   logout(){
-    this.authService.singOut();
+    this.authService.signOut();
+    window.location.href = "/login";
   }
 }

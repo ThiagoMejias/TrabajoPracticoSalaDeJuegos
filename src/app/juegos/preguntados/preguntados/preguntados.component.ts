@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { QuestionsService } from '../../../../services/questions.service';
 import { Question } from '../../../Inteface/question';
 import { CommonModule } from '@angular/common';
 import { QuestionComponent } from '../question/question.component';
 import { TransaltionService } from '../../../../services/transaltion.service';
-
+import { HarryPotterService } from '../../../../services/harry-potter.service';
+import { Characters } from '../../../Inteface/questionHarryPotter';
 @Component({
   selector: 'app-preguntados',
   standalone: true,
@@ -15,6 +15,7 @@ import { TransaltionService } from '../../../../services/transaltion.service';
 export class PreguntadosComponent {
   question!: Question ;
   questions!: Question[];
+  characters! : Characters[]; 
   currentQuestionIndex: number = 0;
   selectedAnswer: string = '';
   showResult: boolean = false;
@@ -22,8 +23,8 @@ export class PreguntadosComponent {
   correctAnswer: boolean = false;
   isWinner: boolean = false;
   textFinal: string = '';
-  loading: boolean = false;
-  constructor(private triviaService: QuestionsService, private _translationService : TransaltionService) { }
+  loading: boolean = true;
+  constructor(private _harryPoterService : HarryPotterService) { }
 
   ngOnInit(): void {
     this.getTriviaQuestions();
@@ -31,28 +32,47 @@ export class PreguntadosComponent {
 
    getTriviaQuestions(): void {
     this.loading = true;
-    this.triviaService.getRandomQuestions(5).subscribe(async (data  : any)=> {
-        this.questions = data;
-        this.questions = await this._translationService.translateQuestions(this.questions);
-        this.getOneQuestion();
-        this.loading = false;
-    });
+      
+    this._harryPoterService.getCharacters().subscribe( (data : Characters[]) => {
+      this.characters = data;  
+      this.questions = this.transformToQuestions(this.characters);
+      this.loading = false;
+      this.getOneQuestion();
+
+    })
   }
 
   getOneQuestion(): Question | null {
-  
-    if (this.questions.length === 0) {
-      return null; 
-    }
 
-    const randomIndex = Math.floor(Math.random() * this.questions.length);
-    const question = this.questions.splice(randomIndex, 1)[0];
-    this.question = question;
-
+    const index = Math.floor(Math.random() * this.questions.length);
+    this.question = this.questions.splice(index, 1)[0];
+    console.log(this.question);
+    
     return this.question;
+   
   }
 
-
+  transformToQuestions(characters: Characters[]): Question[] {
+  
+    return characters
+    .filter(character => character.urlImg !== '') // Filtrar solo los personajes con URL de imagen válida
+    .map(character => {
+      const incorrectAnswers = this.getIncorrectAnswers(characters, character.nameCharacter);
+      return {
+        urlImg: character.urlImg,
+        correct_answer: character.nameCharacter,
+        incorrect_answers: incorrectAnswers
+      };
+    });
+  }
+  getIncorrectAnswers(characters: Characters[], correctAnswer: string): string[] {
+    const incorrectAnswers = characters
+      .filter(character => character.nameCharacter !== correctAnswer)
+      .map(character => character.nameCharacter)
+      const shuffledAnswers = incorrectAnswers.sort(() => Math.random() - 0.5);
+      return shuffledAnswers.slice(0, 3);
+  }
+    
   handleAnswerSelected(isCorrect: boolean) {
     if (isCorrect) {
       this.score +=1;

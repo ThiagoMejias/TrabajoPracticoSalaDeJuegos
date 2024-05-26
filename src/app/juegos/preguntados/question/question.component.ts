@@ -22,10 +22,16 @@ export class QuestionComponent implements OnInit,OnChanges  {
       this.prepareQuestion();
     }
   }
+
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
+  
   prepareQuestion(): void {
-    console.log(this.question);
     this.optionsAnswer = [this.question.correct_answer, ...this.question.incorrect_answers];
     this.optionsAnswer.sort(() => Math.random() - 0.5);
+    console.log(this.question);
+    
   }
   
   selectAnswer(answer: string): void {
@@ -34,8 +40,5 @@ export class QuestionComponent implements OnInit,OnChanges  {
     this.answerSelected.emit(isCorrect);
   }
 
-  nextQuestion(): void {
-  
-  }
 
 }

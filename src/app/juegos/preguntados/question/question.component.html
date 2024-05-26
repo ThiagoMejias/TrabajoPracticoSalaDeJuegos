@@ -1,16 +1,30 @@
 <div class=" container-question d-flex flex-align-items-center justify-content-center">
     <div class="d-flex justify-content-center">
             <h5>
-                {{question.question}}
+                <p>¿Cual es el nombre de este personaje?</p>
             </h5>
     </div>
-    <div class="container-options">
-            @for (option of optionsAnswer; track $index) {
-                <a>
-                    <button class="btn btn-primary answer-button m-1"   (click)="selectAnswer(option)">
-                        {{option}}
-                    </button>
-                </a>
-            }
+
+    <div>
+        <img  class="img-harry" [src]="question.urlImg" alt="">
     </div>
+    <div class="answer-buttons">
+       
+        <ng-container *ngFor="let option of optionsAnswer.slice(0, 2); let i = index; trackBy: trackByIndex">
+          <a>
+            <button class="btn btn-primary answer-button m-1" (click)="selectAnswer(option)">
+              {{ option }}
+            </button>
+          </a>
+        </ng-container>
+      
+       
+        <ng-container *ngFor="let option of optionsAnswer.slice(2); let i = index; trackBy: trackByIndex">
+          <a>
+            <button class="btn btn-primary answer-button m-1" (click)="selectAnswer(option)">
+              {{ option }}
+            </button>
+          </a>
+        </ng-container>
+      </div>
 </div>
